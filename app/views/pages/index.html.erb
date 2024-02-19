@@ -1,6 +1,6 @@
 <div>
   <div>
-    <%= form_with url: root_path, method: :get, data: {turbo_frame: :cities, controller: "dropdown", action: "change->dropdown#submit"} do |f| %>
+    <%= form_with url: root_path, method: :get, data: {controller: "dropdown", action: "change->dropdown#submit"} do |f| %>
       <%= f.collection_select :country, countries, :first, :second, prompt: true, selected: params[:country] %>
 
       <% if states.present? %>
