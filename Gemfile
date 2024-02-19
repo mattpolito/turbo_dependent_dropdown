@@ -68,3 +68,6 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "decent_exposure", "~> 3.0"
+gem "city-state", "~> 1.1"
