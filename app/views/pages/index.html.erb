@@ -1,6 +1,6 @@
 <div>
   <div>
-    <%= form_with url: root_path, method: :get, data: {controller: "dropdown", action: "change->dropdown#submit"} do |f| %>
+    <%= form_with url: root_path, method: :get, data: {turbo_frame: :cities, controller: "dropdown", action: "change->dropdown#submit"} do |f| %>
       <%= f.collection_select :country, countries, :first, :second, prompt: true, selected: params[:country] %>
 
       <% if states.present? %>
@@ -9,14 +9,16 @@
     <% end %>
   </div>
 
-  <% if cities.present? %>
-    <div class="mt-6">
-      <h2>Cities in <%= country_name %></h1>
-      <ul class="list-disc">
-        <% cities.each do |city| %>
-          <li><%= city %></li>
-        <% end %>
-      </ul>
-    <div>
+  <%= turbo_frame_tag :cities do %>
+    <% if cities.present? %>
+      <div class="mt-6">
+        <h2>Cities in <%= country_name %></h1>
+        <ul class="list-disc">
+          <% cities.each do |city| %>
+            <li><%= city %></li>
+          <% end %>
+        </ul>
+      <div>
+    <% end %>
   <% end %>
 </div>
